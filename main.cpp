@@ -177,11 +177,14 @@ void myrr(string strM, string str1){
     else{
         mass[len - 1] = len;
     }
-    while(!flag){ // Находим подстроку
-        strBuff = strM.substr(index, len);
+    while(true){ // Находим подстроку
+        //cout << index << '\t' << strM.length() - len;
+        if(index <= strM.length() - len) strBuff = strM.substr(index, len);
+        else break;
         if (strBuff == str1){
-            cout << index << '\n';
+            cout << index <<' ';
             flag = true;
+            index++;
         }
         else{
             if(str1.find(strBuff[len - 1]) != std :: string :: npos ){
@@ -192,6 +195,8 @@ void myrr(string strM, string str1){
                 }
             }
         }
+    cout << '\n';
+    if (!flag) cout << "Line not found" <<'\n';
     }
 int main() {
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
